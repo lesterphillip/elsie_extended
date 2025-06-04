@@ -248,6 +248,37 @@
         </tbody>
       </table>
 
+      <table border="1">
+        <div style="margin-left: 1cm;">
+          <h2>Ablation Study</h2>
+          <p>
+            As discussed in Chapter VII of the paper, we show that using a parallel BNF setup still has some advantages over the using phoneme-level normalization, despite the phoneme-level normalization showing better results in general.
+          </p>
+          <p>
+            This example shows both scenarios where the Parallel BNF can retain prosody and where the ASR mistranscribed a word. For example, the source EL speech adds a pause in between the two phrases, which Parallel BNF added in naturally without any additional tuning. On the other hand, ASR+TTS mistranscribed this and did not add the pause token, which caused the prosody to be different. This shows that tuning the transcribed ASR text to output the correct prosody was still necessary as decoding text is unstable. This example can be extended to needing to control the correct pitch accent and readings (which is also an entirely different research field in Japanese TTS) before inputting in a TTS system is necessary.
+          </p>
+
+          <p>
+            The original transcription is 本日はお招きいただきまして、誠にありがとうございます / honjitsu wa omaneki itadakimashite, makoto ni arigatou gozaimasu.
+          </p>
+        </div>
+        <thead>
+          <tr>
+            <th>Source waveform</th>
+            <th>Converted (Parallel BNF)</th>
+            <th>Converted (Phoneme-level intermediates)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><audio controls><source src="ablations/source_with_pause.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="ablations/NETRAB00008_bnf.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="ablations/NETRAB00008_asrtts.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+
 
   </body>
 </html>
